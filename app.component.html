@@ -1,0 +1,129 @@
+<div class="parent">
+<div>
+
+<h2>angular Interpolation/ string interpolation</h2>
+ <p >{{title}}</p>
+  <p>{{firstvar+lastname}}</p>
+  <p>addition is {{number1+number2}}</p>
+
+
+  <h2>property binding</h2>
+  <img [src]="imgUrl" style="height: 200px;width: 200px;">
+
+
+
+  <h2>Event binding using form</h2>
+  <form >
+    username <input name="username" type="text">
+    <input (click)="addTwonumbers($event)"  type="submit" value="submit">
+  </form>
+</div>
+
+<h2>Event Bubbling Example</h2>
+<!-- Event Bubbling -->
+<div (click)="onDivClick()">
+  <button (click)="onSave($event)">Save</button>
+</div>
+
+
+
+
+<h2>two way binding</h2>
+<div>
+  <input [(ngModel)]="fullName"/>
+
+  <p>{{fullName}}</p>
+</div>
+<!--two  way binding using target (without importing form module we can access it)-->
+<input [value]="msg" (input)="setMsg($event.target.value)">
+{{msg}}
+
+
+
+<!--attribute binding-->
+  <p>this is a paragraph</p>
+  <input [attr.placeholder]='attributeText'/>it is span
+
+<table [attr.border]="borderAttr">
+  <tr><td >name</td><td>roll no</td></tr>
+ <!-- <tr><td colspan="{{colspanAttr}}">check col</td></tr>-->
+  <tr><td [colSpan]="1 + 1">Three-Four</td></tr>
+  <tr><td colSpan="{{colspanAttr}}">property cant get attribute value</td></tr>
+  <tr><td [attr.colspan]="colspanAttr">subhankari</td><td>1401110086</td></tr>
+</table>
+
+
+<!--change event binding -->
+<div> Months :
+  <select (change) = "changemonths($event)">
+    <option *ngFor = "let i of months">{{i}}</option>
+  </select>
+</div>
+
+
+<input on-change = "changeText($event.target.value)">
+<p>{{valueOfIp}}</p>
+
+
+
+
+<!--key-down and key-up event binding-->key
+<!--<input (keydown)="msg2='Key down'" (keyup)="msg2='Key Up'">{{msg2}}-->
+<input on-keydown="msg2='Key down'" on-keyup="msg2='Key Up'">{{msg2}}
+
+<p [innerHTML] = "msg3">{{msg3}}</p>
+
+
+<!--
+<h3>toggle the "special" class on/off with a property:</h3>
+<div [class.special]="isSpecial">The class binding is special.</div>
+
+<h3>binding to class.special overrides the class attribute:</h3>
+<div class="special" [class.special]="!isSpecial">This one is not so special.</div>
+
+<h3>Using the bind- syntax:</h3>
+<div bind-class.special="isSpecial">This class binding is special too.</div>
+
+<h3>Overwrite all existing classes with a new class:</h3>
+<div class="item clearance special" [attr.class]="resetClasses">Reset all classes at once</div>
+
+<h3>Add a class:</h3>
+<div class="item clearance special" [class.item-clearance]="itemClearance">Add another class</div>-->
+
+
+<!--nesting one component within another component-->
+<app-employee></app-employee>
+<app-nested></app-nested>
+  <app-parent-component></app-parent-component>
+  <app-customer>taking customer as parent of employee when employee is not inside customer component</app-customer>
+
+
+  <app-school></app-school>
+  <app-sea></app-sea>
+  <app-unreleated-to-sea></app-unreleated-to-sea>
+<app-parent-service></app-parent-service>
+  <app-sibling-service></app-sibling-service>
+ <!-- <app-product-details></app-product-details>-->
+  <app-directives-comp></app-directives-comp>
+
+<!--  <app-custom-pipe-comp></app-custom-pipe-comp>-->
+
+</div>
+<app-pipe-comp></app-pipe-comp>
+<h1>Custom Pipe</h1>
+<b>Square root of 25 is: {{25 | sqrt}}</b>
+<br/>
+<b>Square root of 729 is: {{729 | sqrt}}</b>
+
+
+<div [ngSwitch]="cell.type">
+  <div *ngSwitchCase="cellType.Text">
+    {{cell.text}}
+  </div>
+  <div *ngSwitchCase="cellType.Placeholder">
+    Placeholder
+  </div>
+</div>
+<button (click)="setType(cellType.Text)">Text</button>
+<button (click)="setType(cellType.Placeholder)">Placeholder</button>
+<app-template-comp></app-template-comp>
